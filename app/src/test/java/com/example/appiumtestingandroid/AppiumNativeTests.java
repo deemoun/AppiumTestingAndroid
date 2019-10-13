@@ -1,14 +1,11 @@
 package com.example.appiumtestingandroid;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -26,13 +23,12 @@ public class AppiumNativeTests {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
         capabilities.setCapability(MobileCapabilityType.ORIENTATION, "LANDSCAPE");
         capabilities.setCapability(MobileCapabilityType.APP, "https://raw.githubusercontent.com/afollestad/material-dialogs/master/sample/sample.apk");
-
-        driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
+        driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         System.out.println("Device orientation: " + driver.getOrientation());
         System.out.println("Current activity: " + driver.currentActivity());
     }
 
-    @BeforeMethod
+    @AfterMethod
     public void restartApp(){
         // Restart the app before each test case
         driver.resetApp();
