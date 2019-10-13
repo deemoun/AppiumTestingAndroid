@@ -35,7 +35,6 @@ public class AppiumNativeTests {
     @BeforeMethod
     public void restartApp(){
         // Restart the app before each test case
-
         driver.resetApp();
     }
 

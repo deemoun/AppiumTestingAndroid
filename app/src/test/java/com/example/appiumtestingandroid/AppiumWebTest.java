@@ -36,19 +36,15 @@ public class AppiumWebTest {
     @Test(priority = 0)
     public void loginOnMainPage() {
         driver.get("https://m.facebook.com");
-        WebElement email = driver.findElement(By.id("m_login_email"));
-        email.sendKeys("mylogin");
-        WebElement password = driver.findElement(By.id("m_login_password"));
-        password.sendKeys("mypassword");
-        WebElement loginButton = driver.findElement(By.name("login"));
-        loginButton.click();
+        driver.findElement(By.id("m_login_email")).sendKeys("mylogin");
+        driver.findElement(By.id("m_login_password")).sendKeys("mypassword");
+        driver.findElement(By.name("login")).click();
         }
 
     @Test(priority = 1)
     public void createNewAccount() {
         driver.get("https://m.facebook.com");
-        WebElement createNewAccountButton = driver.findElement(By.id("signup-button"));
-        createNewAccountButton.click();
+        driver.findElement(By.id("signup-button")).click();
         }
 
     @AfterSuite
