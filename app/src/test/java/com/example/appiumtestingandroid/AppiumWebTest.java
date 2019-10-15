@@ -2,6 +2,7 @@ package com.example.appiumtestingandroid;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -38,6 +39,7 @@ public class AppiumWebTest {
     @Test(priority = 0)
     public void loginOnMainPage() {
         driver.get("https://m.facebook.com");
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook.com"), "URL doesn't match");
         driver.findElement(By.id("m_login_email")).sendKeys("mylogin");
         driver.findElement(By.id("m_login_password")).sendKeys("mypassword");
         driver.findElement(By.name("login")).click();
