@@ -32,7 +32,7 @@ public class AppiumWebTest {
 
     @AfterMethod
     public void restartApp(){
-        // Restart the app before each test case
+        // Restart the app after each test case
         driver.resetApp();
     }
 
