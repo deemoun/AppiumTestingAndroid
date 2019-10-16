@@ -38,7 +38,7 @@ public class AppiumWebTest {
         driver.resetApp();
     }
 
-    @Test(priority = 0, enabled = false)
+    @Test(priority = 0, enabled = true)
     public void loginOnMainPage() {
         driver.get("https://m.facebook.com");
         Assert.assertTrue(driver.getCurrentUrl().contains("facebook.com"), "URL doesn't match");
@@ -47,7 +47,7 @@ public class AppiumWebTest {
         driver.findElement(By.name("login")).click();
         }
 
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1, enabled = true)
     public void createNewAccount() {
         driver.get("https://m.facebook.com");
         driver.findElement(By.id("signup-button")).click();
@@ -57,12 +57,6 @@ public class AppiumWebTest {
     public void pressOnHelpButton(){
         driver.get("https://m.facebook.com");
         driver.findElement(By.xpath("//*[@id=\"help-link\"]")).click();
-    }
-
-    @Test(priority = 3)
-    public void waitWebDriver(){
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS) ;
-        System.out.println("Implicit wait");
     }
 
     @AfterSuite
