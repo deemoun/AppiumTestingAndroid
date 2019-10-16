@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -36,7 +38,7 @@ public class AppiumWebTest {
         driver.resetApp();
     }
 
-    @Test(priority = 0)
+    @Test(priority = 0, enabled = false)
     public void loginOnMainPage() {
         driver.get("https://m.facebook.com");
         Assert.assertTrue(driver.getCurrentUrl().contains("facebook.com"), "URL doesn't match");
@@ -45,11 +47,23 @@ public class AppiumWebTest {
         driver.findElement(By.name("login")).click();
         }
 
-    @Test(priority = 1)
+    @Test(priority = 1, enabled = false)
     public void createNewAccount() {
         driver.get("https://m.facebook.com");
         driver.findElement(By.id("signup-button")).click();
         }
+
+    @Test(priority = 2)
+    public void pressOnHelpButton(){
+        driver.get("https://m.facebook.com");
+        driver.findElement(By.xpath("//*[@id=\"help-link\"]")).click();
+    }
+
+    @Test(priority = 3)
+    public void waitWebDriver(){
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS) ;
+        System.out.println("Implicit wait");
+    }
 
     @AfterSuite
     public static void teardown(){
