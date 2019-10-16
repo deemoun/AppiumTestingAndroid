@@ -21,7 +21,7 @@ public class AppiumNativeTests {
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android SDK built for x86");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
-        capabilities.setCapability(MobileCapabilityType.ORIENTATION, "LANDSCAPE");
+        capabilities.setCapability(MobileCapabilityType.ORIENTATION, "PORTRAIT");
         capabilities.setCapability(MobileCapabilityType.APP, "https://raw.githubusercontent.com/afollestad/material-dialogs/master/sample/sample.apk");
         driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         System.out.println("Device orientation: " + driver.getOrientation());
